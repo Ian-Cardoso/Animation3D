@@ -1,0 +1,106 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.list{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(26, 25, 25);
+    flex-wrap: wrap;
+    transform-style: preserve-3d;
+    transform: perspective(1300px);
+}
+
+img{
+    width: 150px;
+    height: 200px;
+    padding: 5px;
+}
+
+
+
+.list .item{
+    transition: .5s;
+    filter: brightness(0);
+}
+
+.list .item:hover{
+    filter: brightness(1);
+    transform: translateZ(200px);
+}
+
+.list .item:hover + *{
+    filter: brightness(0.6);
+    transform: translateZ(150px) rotateY(30deg);;
+}
+
+.list .item:hover + * + *{
+    filter: brightness(0.4);
+    transform: translateZ(70px) rotateY(20deg);;
+}
+
+.list .item:hover + * + * + *{
+    filter: brightness(0.2);
+    transform: translateZ(30px) rotateY(10deg);;
+}
+
+.list .item:has(+ *:hover){
+    filter: brightness(0.6);
+    transform: translateZ(150px) rotateY(-30deg);;
+}
+
+.list .item:has(+ * + *:hover){
+    filter: brightness(0.4);
+    transform: translateZ(70px) rotateY(-20deg);;
+}
+
+.list .item:has(+ * + * + *:hover){
+    filter: brightness(0.4);
+    transform: translateZ(30px) rotateY(-10deg);;
+}
+
+@media (max-width: 1024px) {
+    .list{
+        transform: perspective(1900px);
+    }
+}
+
+@media (max-width: 768px) {
+
+    img{
+        width: 140px;
+    }
+    .list{
+        align-content: center;
+        transform: perspective(2100px);
+    }
+}
+
+@media (max-width: 468px) {
+    .list{
+
+        transform: perspective(1900px);
+    }
+
+    .list .item:hover + *{
+        filter: brightness(0.6);
+        transform: translateZ(100px) rotateY(30deg);;
+    }
+    
+    .list .item {
+        transition: 0.5s;
+        filter: brightness(0.3);
+    }
+}
+
+
+
+
+
+
+
+
